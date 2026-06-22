@@ -1,12 +1,188 @@
-## oleiloeiroonline.top
+# oleiloeiroonline
 
-<img width="280" height="200" alt="a157dd6e3728ca304d31093e7303f223" src="https://github.com/user-attachments/assets/c57faaf5-f093-4632-a43f-1010ee32fecc" />
-<img width="280" height="255" alt="oleiloeiromicroservicos" src="https://github.com/user-attachments/assets/2022d8f3-c113-44b1-adae-e8901df9b11a" />
-<img width="300" height="300" alt="leiloeiroonline" src="https://github.com/user-attachments/assets/4589e4a9-160a-4929-be55-249c5d39ccf1" />
-<img width="250" height="200" alt="zen_k21S8hyfVZ" src="https://github.com/user-attachments/assets/e6176586-125b-4873-a5cf-c6308b5b0853" />
-<img width="450" height="292" alt="bloggif_6a28823478a2f" src="https://github.com/user-attachments/assets/8f5730b5-6600-4af7-8995-608bf403320d" />
-<img width="300" height="300" alt="brain_ddd" src="https://github.com/user-attachments/assets/215c38b6-be80-4fcb-aa43-82eea45a70a2" />
+> Plataforma de leilões desenvolvida utilizando arquitetura de microsserviços, mensageria assíncrona, API Gateway e observabilidade.
 
+## 📖 Sobre o Projeto
 
+O **oleiloeiroonline** é um ecossistema composto por diversos microsserviços independentes, cada um responsável por um domínio específico da aplicação.
 
+A arquitetura foi projetada seguindo princípios como:
 
+* Arquitetura de Microsserviços
+* Comunicação síncrona via APIs
+* Comunicação assíncrona através de Message Broker
+* API Gateway
+* Observabilidade
+* Baixo acoplamento
+* Alta coesão
+
+---
+
+# 🏗 Arquitetura
+
+```text
+                        Clientes
+                           │
+                           ▼
+                    ┌────────────────┐
+                    │  API Gateway   │
+                    └────────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+
+ User Service      Auction Service     Listing Service
+        │                  │                  │
+        ├──────────┐       │                  │
+        ▼          ▼       ▼                  ▼
+
+Payment      Transaction  Review        Report
+ Service        Service   Service       Service
+
+        │
+        ▼
+
+Notification Service
+
+        ▲
+        │
+ Message Broker (Eventos)
+
+        │
+        ▼
+
+Observabilidade
+```
+
+---
+
+# 📦 Repositórios
+
+| Serviço                  | Descrição                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| **API Gateway**          | Porta de entrada da aplicação. Responsável pelo roteamento das requisições para os microsserviços. |
+| **User Service**         | Gerenciamento de usuários, autenticação e informações cadastrais.                                  |
+| **Auction Service**      | Responsável pelas regras de negócio relacionadas aos leilões.                                      |
+| **Listing Service**      |                                            |
+| **Review Service**       |                                                  |
+| **Payment Service**      | Processamento dos pagamentos da plataforma.                                                        |
+| **Transaction Service**  |                                                                |
+| **Notification Service** | Envio de notificações e comunicação com usuários.                                                  |
+| **Report Service**       |                                                                 |
+| **Q&A Service**          | Sistema de perguntas e respostas relacionadas aos anúncios.                                        |
+| **Message Broker**       | Comunicação assíncrona entre os microsserviços.                                                    |
+| **Observabilidade**      | Monitoramento, métricas, logs e rastreamento distribuído.                                          |
+
+---
+
+# 🔗 Estrutura dos Repositórios
+
+```
+PB Softwares Escaláveis
+│
+├── api-gateway
+├── auction-service
+├── listing-service
+├── user-service
+├── payment-service
+├── transaction-service
+├── notification-service
+├── report-service
+├── review-service
+├── Q-AService
+├── message-broker
+└── observabilidade
+```
+
+---
+
+# 🔄 Fluxo Geral
+
+```text
+Cliente
+
+      │
+
+      ▼
+
+API Gateway
+
+      │
+
+      ├────────► User Service
+      │
+      ├────────► Auction Service
+      │
+      ├────────► Listing Service
+      │
+      ├────────► Payment Service
+      │
+      ├────────► Review Service
+      │
+      ├────────► Report Service
+      │
+      └────────► Notification Service
+
+                 │
+                 ▼
+
+          Message Broker
+
+                 │
+
+                 ▼
+
+      Comunicação Assíncrona
+```
+
+---
+
+# 🚀 Principais Características
+
+* Microsserviços independentes
+* Comunicação síncrona e assíncrona
+* API Gateway
+* Mensageria baseada em eventos
+* Observabilidade centralizada
+* Separação por domínio de negócio
+* Facilidade para manutenção e evolução
+
+---
+
+# 📡 Comunicação entre Serviços
+
+A comunicação ocorre de duas formas:
+
+### Comunicação síncrona
+
+* HTTP/REST
+* API Gateway → Microsserviços
+
+### Comunicação assíncrona
+
+* Eventos publicados no Message Broker
+* Consumidores desacoplados
+* Processamento assíncrono
+
+---
+
+# 📈 Observabilidade
+
+O projeto possui um módulo dedicado para monitoramento da infraestrutura e dos serviços, incluindo:
+
+* Centralização de logs
+* Coleta de métricas
+* Dashboards
+* Rastreamento distribuído (Tracing)
+* Monitoramento da saúde dos serviços
+
+---
+
+# 🎯 Objetivos da Arquitetura
+
+* Alta disponibilidade
+* Facilidade de manutenção
+* Escalabilidade
+* Independência entre serviços
+* Resiliência
