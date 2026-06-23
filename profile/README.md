@@ -2,7 +2,8 @@
 # O Leiloeiro Online
 
 > Plataforma de leilões desenvolvida utilizando arquitetura de microsserviços, mensageria assíncrona, API Gateway e observabilidade.
-Mais informações podem ser encontradas no documento: https://docs.google.com/document/d/1IwLaNUv1CrFVAYuDKi700pC3CdRqt-E6lAhX_VVGOcI/edit?pli=1&tab=t.0
+Mais informações podem ser encontradas [neste documento](https://docs.google.com/document/d/1IwLaNUv1CrFVAYuDKi700pC3CdRqt-E6lAhX_VVGOcI/edit?pli=1&tab=t.0) e nos README's individuais de cada microsserviço.
+
 
 ## 📖 Sobre o Projeto
 
@@ -63,8 +64,8 @@ Observabilidade
 
 | Serviço                  | Descrição                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------- |
-| **API Gateway**          | Porta de entrada da aplicação. Responsável pelo roteamento das requisições para os microsserviços. |
-| **User Service**         | Gerenciamento de usuários, autenticação e informações cadastrais.                                  |
+| **API Gateway**          | Porta de entrada da aplicação. Responsável pelo roteamento das requisições para os microsserviços e da autenticação dos usuários (via Keycloak). |
+| **User Service**         | Gerenciamento de usuários, informações cadastrais e aplicação de penalidades.                                  |
 | **Auction Service**      | Responsável pelas regras de negócio relacionadas aos leilões.                                      |
 | **Listing Service**      |                                            |
 | **Review Service**       |                                                  |
@@ -193,14 +194,14 @@ O projeto possui um módulo dedicado para monitoramento da infraestrutura e dos 
 
 # 🚀 Funcionamento
 
-Essa organização possui todos os microsserviços necessários para o funcionamento da aplicação. Você pode optar por rodar cada serviço individualmente através do docker-compose do serviço em específico ou então rodar o docker-compose presente no repositório compose-master.
+Essa organização possui todos os microsserviços necessários para o funcionamento da aplicação. Você pode optar por rodar cada serviço individualmente através do `docker-compose` do serviço em específico ou então rodar o `docker-compose` presente no repositório compose-master.
 
 > 💡 ATENÇÃO 
 > Devido ao grande número de microsserviços e dependências necessárias para o funcionamento da aplicação como um todo, NÃO tente rodar o compose master caso você não disponha de pelo menos 10 GB de RAM livre. Ainda assim, o módulo de observabilidade ficou separado por conta do limite computacional atingido.
 
 Para fazer a aplicação rodar, siga os seguintes passos:
 
- 1. Peça o .env atualizado a um dos componentes da organização e o coloque no mesmo nível do docker-compose do projeto desejado.
- 2. Certifique-se de que todos os serviços estão rodando na mesma rede interna do docker. Por padrão, no docker-compose master, eles rodam numa rede chamada leilao-network, que é criada no momento da subida dos conteineres.
+ 1. Peça o .env atualizado a um dos componentes da organização e o coloque no mesmo nível do `docker-compose` do projeto desejado.
+ 2. Certifique-se de que todos os serviços estão rodando na mesma rede interna do docker. Por padrão, no `docker-compose master`, eles rodam numa rede chamada leilao-network, que é criada no momento da subida dos conteineres.
  3. AGUARDE. São pelo menos 40 conteineres e muitos deles (ksqldb, elasticsearch, keycloak, kafka connect, kafka, etc) são pesados e demoram para ficar prontos.
- 4. Acesse a aplicação via front-end via localhost:3000.
+ 4. Acesse a aplicação via front-end via `localhost:3000`.
