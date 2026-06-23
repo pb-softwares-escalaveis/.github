@@ -197,7 +197,7 @@ O projeto possui um módulo dedicado para monitoramento da infraestrutura e dos 
 Essa organização possui todos os microsserviços necessários para o funcionamento da aplicação. Você pode optar por rodar cada serviço individualmente através do `docker-compose` do serviço em específico ou então rodar o `docker-compose` presente no repositório compose-master.
 
 > 💡 ATENÇÃO 
-> Devido ao grande número de microsserviços e dependências necessárias para o funcionamento da aplicação como um todo, NÃO tente rodar o compose master caso você não disponha de pelo menos 10 GB de RAM livre. Ainda assim, o módulo de observabilidade ficou separado por conta do limite computacional atingido.
+> Devido ao grande número de microsserviços e dependências necessárias para o funcionamento da aplicação como um todo, NÃO tente rodar o compose master caso você não disponha de pelo menos 10 GB de RAM livre.
 
 Para fazer a aplicação rodar, siga os seguintes passos:
 
