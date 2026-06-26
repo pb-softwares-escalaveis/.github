@@ -65,14 +65,14 @@ Observabilidade
 | Serviço                  | Descrição                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------- |
 | **API Gateway**          | Porta de entrada da aplicação. Responsável pelo roteamento das requisições para os microsserviços e da autenticação dos usuários (via Keycloak). |
-| **User Service**         | Gerenciamento de usuários, informações cadastrais e aplicação de penalidades.                                  |
+| **User Service**         | Gerenciamento de usuários, informações cadastrais e aplicação de penalidades.                      |
 | **Auction Service**      | Responsável pelas regras de negócio relacionadas aos leilões.                                      |
-| **Listing Service**      |                                            |
-| **Review Service**       |                                                  |
+| **Listing Service**      | Realiza buscas complexas usando Elastic Search e uma projeção dos dados de Auction Service         |
+| **Review Service**       | Utiliza a API do Google Gemini para análise de conteúdo na plataforma.                             |
 | **Payment Service**      | Processamento dos pagamentos da plataforma.                                                        |
-| **Transaction Service**  |                                                                |
+| **Transaction Service**  | Gerencia a relação entre comprador e vendedor após a finalização do anúncio.                       |
 | **Notification Service** | Envio de notificações e comunicação com usuários.                                                  |
-| **Report Service**       |                                                                 |
+| **Report Service**       | Permite a solicitação de reanálise de conteúdo da plataforma através do Review Service             |
 | **Q&A Service**          | Sistema de perguntas e respostas relacionadas aos anúncios.                                        |
 | **Message Broker**       | Comunicação assíncrona entre os microsserviços.                                                    |
 | **Observabilidade**      | Monitoramento, métricas, logs e rastreamento distribuído.                                          |
